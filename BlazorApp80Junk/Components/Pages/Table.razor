@@ -1,0 +1,68 @@
+﻿@page "/table"
+<MudPopoverProvider/>
+<MudPopover/>
+
+<MudTable Items="@Elements" class="mt-12">
+
+    <RowTemplate>
+        <MudTd DataLabel="Sign">@context.Sign</MudTd>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+    </RowTemplate>
+
+
+    <PagerContent>
+        <MudTablePager PageSizeOptions="new int[] {3, 5, 10 }" />
+    </PagerContent>
+
+
+
+</MudTable>
+
+
+
+@code {
+
+
+
+
+
+
+    private IEnumerable<Element> Elements = new List<Element>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Elements = new Element().GetElements();
+    }
+
+
+    public class Element
+    {
+        public string Name { get; set; }
+        public int Number { get; set; }
+        public string Sign { get; set; }
+
+
+        public IEnumerable<Element> GetElements()
+        {
+            return Elements;
+        }
+
+
+
+        private IEnumerable<Element> Elements => new List<Element>
+    {
+        new Element { Name = "Helium"   , Sign = "He" },
+        new Element { Name = "Neon"     , Sign = "Ne" },
+        new Element { Name = "Argon"    , Sign = "Ar" },
+        new Element { Name = "Lithium"  , Sign = "Li" },
+        new Element { Name = "Sodium"   , Sign = "Na" },
+        new Element { Name = "Potassium", Sign = "K" },
+        new Element { Name = "Scandium" , Sign = "Sc" },
+        new Element { Name = "Titanium" , Sign = "Ti" },
+        new Element { Name = "Vanadium" , Sign = "V" },
+        new Element { Name = "Lanthanum", Sign = "La" }
+    };
+
+
+    }
+}
