@@ -1,5 +1,8 @@
 using BlazorApp80Junk.Components;
 
+using MudBlazor.Services;
+
+
 namespace BlazorApp80Junk
 {
     public class Program
@@ -7,6 +10,9 @@ namespace BlazorApp80Junk
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddMudServices();
+
 
             // Add services to the container.
             builder.Services.AddRazorComponents()
