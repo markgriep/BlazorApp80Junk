@@ -10,4 +10,10 @@
     <PackageReference Include="MudBlazor" Version="6.16.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Components\Pages\Weatherx.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 </Project>
