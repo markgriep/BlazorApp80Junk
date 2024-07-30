@@ -1,0 +1,62 @@
+﻿@page "/weatherx"
+@using BlazorApp80Junk
+
+
+
+<PageTitle>Weather</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">Elements...</MudText>
+
+@if (Elements == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+  <MudTable Items="Elements" Hover="true" SortLabel="Sort By" Elevation="0" AllowUnsorted="false">
+        <HeaderContent>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Element, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<Element, object>(x=>x?.Sign)">Sign</MudTableSortLabel></MudTh>
+      
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Element, object>(x=>x.Group)">Group</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Element, object>(x=>x.Molar)">Molar</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Element, object>(x=>x.Name)">Electrons</MudTableSortLabel></MudTh>
+           
+
+
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Name">@context.Name</MudTd>
+            <MudTd DataLabel="Sign">@context.Sign</MudTd>
+
+
+            <MudTd DataLabel="Group">@context.Group</MudTd>
+            <MudTd DataLabel="Molar">@context.Molar</MudTd>
+            <MudTd DataLabel="Electrons">@string.Join(", ", @context.Electrons)</MudTd>
+
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager PageSizeOptions="new int[]{5, 25, 50}" />
+        </PagerContent>
+    </MudTable>
+}
+
+
+
+
+
+
+
+@code {
+   
+    private IEnumerable<Element> Elements = new List<Element>();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        Elements = Element.GetElements();
+
+    }
+
+   
+}
