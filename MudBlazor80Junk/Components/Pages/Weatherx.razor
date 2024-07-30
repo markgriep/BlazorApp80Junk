@@ -16,13 +16,23 @@ else
   <MudTable Items="Elements" Hover="true" SortLabel="Sort By" Elevation="0" AllowUnsorted="false">
         <HeaderContent>
             <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Element, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<Element, object>(x=>x?.Sign)">Number</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<Element, object>(x=>x?.Sign)">Sign</MudTableSortLabel></MudTh>
       
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Element, object>(x=>x.Group)">Group</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Element, object>(x=>x.Molar)">Molar</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Element, object>(x=>x.Name)">Electrons</MudTableSortLabel></MudTh>
            
+
+
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="Name">@context.Name</MudTd>
             <MudTd DataLabel="Sign">@context.Sign</MudTd>
+
+
+            <MudTd DataLabel="Group">@context.Group</MudTd>
+            <MudTd DataLabel="Molar">@context.Molar</MudTd>
+            <MudTd DataLabel="Electrons">@string.Join(", ", @context.Electrons)</MudTd>
 
         </RowTemplate>
         <PagerContent>
@@ -38,7 +48,7 @@ else
 
 
 @code {
-    // private WeatherForecast[]? forecasts;  // git rid
+   
     private IEnumerable<Element> Elements = new List<Element>();
 
     protected override async Task OnInitializedAsync()
@@ -48,11 +58,5 @@ else
 
     }
 
-    // private class WeatherForecast
-    // {
-    //     public DateOnly Date { get; set; }
-    //     public int TemperatureC { get; set; }
-    //     public string? Summary { get; set; }
-    //     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    // }
+   
 }
