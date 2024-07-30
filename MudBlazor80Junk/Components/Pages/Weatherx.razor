@@ -27,7 +27,7 @@ else
             <MudTd DataLabel="Summary">@context.Summary</MudTd>
         </RowTemplate>
         <PagerContent>
-            <MudTablePager PageSizeOptions="new int[]{50, 100}" />
+            <MudTablePager PageSizeOptions="new int[]{5, 25, 50}" />
         </PagerContent>
     </MudTable>
 }
@@ -38,11 +38,11 @@ else
     protected override async Task OnInitializedAsync()
     {
         // Simulate asynchronous loading to demonstrate a loading indicator
-        await Task.Delay(500);
+        await Task.Delay(50);
 
         var startDate = DateOnly.FromDateTime(DateTime.Now);
         var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        forecasts = Enumerable.Range(1, 525).Select(index => new WeatherForecast
         {
             Date = startDate.AddDays(index),
             TemperatureC = Random.Shared.Next(-20, 55),
