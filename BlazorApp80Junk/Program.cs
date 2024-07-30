@@ -12,7 +12,6 @@ namespace BlazorApp80Junk
             var builder = WebApplication.CreateBuilder(args);
 
 
-
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
@@ -23,6 +22,8 @@ namespace BlazorApp80Junk
 
             var app = builder.Build();
 
+
+
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -31,6 +32,7 @@ namespace BlazorApp80Junk
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
@@ -38,6 +40,7 @@ namespace BlazorApp80Junk
 
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();
+
 
             app.Run();
         }

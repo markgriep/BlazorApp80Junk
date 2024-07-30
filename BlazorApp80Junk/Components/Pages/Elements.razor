@@ -1,19 +1,18 @@
-﻿@page "/weatherx"
+﻿@page "/elements"
 @using BlazorApp80Junk
-
 
 
 <PageTitle>Weather</PageTitle>
 
 <MudText Typo="Typo.h3" GutterBottom="true">Elements...</MudText>
 
-@if (Elements == null)
+@if (_Elements == null)
 {
     <MudProgressCircular Color="Color.Default" Indeterminate="true" />
 }
 else
 {
-  <MudTable Items="Elements" Hover="true" SortLabel="Sort By" Elevation="0" AllowUnsorted="false">
+  <MudTable Items="_Elements" Hover="true" SortLabel="Sort By" Elevation="0" AllowUnsorted="false">
         <HeaderContent>
             <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Element, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<Element, object>(x=>x?.Sign)">Sign</MudTableSortLabel></MudTh>
@@ -49,12 +48,12 @@ else
 
 @code {
    
-    private IEnumerable<Element> Elements = new List<Element>();
+    private IEnumerable<Element> _Elements = new List<Element>();
 
     protected override async Task OnInitializedAsync()
     {
 
-        Elements = Element.GetElements();
+        _Elements = Element.GetElements();
 
     }
 
