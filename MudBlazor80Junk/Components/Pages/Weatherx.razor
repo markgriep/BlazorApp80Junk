@@ -38,7 +38,7 @@ else
 
 
 @code {
-    private WeatherForecast[]? forecasts;  // git rid
+    // private WeatherForecast[]? forecasts;  // git rid
     private IEnumerable<Element> Elements = new List<Element>();
 
     protected override async Task OnInitializedAsync()
@@ -48,11 +48,11 @@ else
 
     }
 
-    private class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
+    // private class WeatherForecast
+    // {
+    //     public DateOnly Date { get; set; }
+    //     public int TemperatureC { get; set; }
+    //     public string? Summary { get; set; }
+    //     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    // }
 }
